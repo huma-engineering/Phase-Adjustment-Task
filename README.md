@@ -2,6 +2,8 @@
 
 An Open Source release from Huma Therapeutics labs, which lets you measure interoception (awareness of body signal) from a research participant, using the camera on an iphone to capture heartbeats and, interactively with the user, ascertain how accurately they perceive them.
 
+You will need to add your own database backend. We used Firebase, and you can too, just add your own GoogleService-Info.plist to the root of the folder.
+
 # Data Analysis
 How to use the PAT analysis script:
 Ensure collected PAT data .json is in the same folder as the .Rmd analysis script. Ensure that:
