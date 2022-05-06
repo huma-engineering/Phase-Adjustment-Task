@@ -1,0 +1,834 @@
+---
+title: "Phase Adjustment Task: App data analysis"
+author: "Adam Cunningham, Sonia Ponzo, Davide Morelli and David Plans"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    fig_caption: yes
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(jsonlite)
+library(RHRV)
+library(rstatix)
+library(broom)
+library(ggpubr)
+library(arsenal)
+library(ClusterR)
+library(mclust)
+library(AdaptGauss)
+```
+
+<style>
+p.caption {
+  font-style: italic;
+}
+</style>
+
+```{r include=FALSE}
+## set seed for reproducibilty
+set.seed(1234)
+## read app data data from prolific JSON
+data <- rjson::fromJSON(file = "/Users/adamcunningham/Documents/GitHub/RD-InteroceptionPhases/TestRetest/ProlificRun2/Part1/interotestretest-default-rtdb-protoprolific-exportCLEAN.json")
+```
+
+``` {r, include=F}
+### Set Up Formulas
+
+#Similarity formula - PLV
+
+calc_similarity <- function(delays, periods) {
+  angles = delays / periods * 2 * pi
+  
+
+  delays_complex <- complex(modulus=periods/(2*pi), argument=angles)
+  
+
+  delays_complex_hat <- sapply(delays_complex, 
+                            function(a) complex(modulus = 1.0, argument = Arg(a)*Mod(a)*2*pi))
+  Similarity <- 1/length(delays_complex_hat)*Mod(sum(delays_complex_hat))
+  Similarity
+}
+
+calc_similarity_angles <- function(angles) {
+  delays_complex_hat <- complex(modulus = 1.0, argument = angles)
+  plot(delays_complex_hat)
+  Similarity <- 1/length(delays_complex_hat)*Mod(sum(delays_complex_hat))
+  Similarity
+}
+
+# Find a way to summarise the delays - averaging them doesn't work, we first need to map them as angles. This is what this function is doing: it's finding the arguments of the delays to calculate the mean delay per subject.
+
+becca_argomenti <- function(delays, periods) {
+  angles = delays / periods * 2 * pi
+  delays_complex <- complex(modulus=periods/(2*pi), argument=angles)
+  delays_complex_hat <- sapply(delays_complex, 
+                               function(a) complex(modulus = 1.0, argument = Arg(a)*Mod(a)*2*pi))
+  Arg(delays_complex_hat)
+}
+
+calc_similarity_complex <- function(delays, periods) {
+  
+  angles = delays / periods * 2 * pi
+  
+
+  delays_complex <- complex(modulus=periods/(2*pi), argument=angles)
+  
+
+  delays_complex_hat <- sapply(delays_complex, 
+                            function(a) complex(modulus = 1.0, argument = Arg(a)*Mod(a)*2*pi))
+  mod <- 1/length(delays_complex_hat)*Mod(sum(delays_complex_hat))
+  arg <- Arg(sum(delays_complex_hat))
+  complex(argument = arg, modulus = mod)
+}
+
+#Function that takes the mode out of a variable
+getmode <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+#Returns random elements from the uniform distribution (between -pi and +pi)
+random_x <- runif(5000, -pi, pi)
+
+```
+
+
+```{r include=FALSE, warning=FALSE}
+
+n_needed_trials<-16
+### Create dataframe of summary variables for each individual
+# To debug define user_index as a number and run line by line e.g user_index=80
+similarities_users_df <- purrr::map_dfr(1:length(data), function(user_index) {
+  null_row = list(similarity=NA, 
+               confidence=NA,
+               bodyPos=NA)
+  user_data <- data[[user_index]][[1]]
+  
+      if (length(user_data$syncroTraining) >= (n_needed_trials+2)) {
+        delays <- purrr::map_dbl(user_data$syncroTraining[-c(1,2)], function(trial_data) {
+          if (length(trial_data$currentDelays) > 0) {
+            trial_data$currentDelays[length(trial_data$currentDelays)]
+          } else {
+            NA
+          }
+        })
+        
+        periods <- purrr::map_dbl(user_data$syncroTraining[-c(1,2)], function(trial_data) {
+          if (length(trial_data$averagePeriods) > 0) {
+            trial_data$averagePeriods[length(trial_data$averagePeriods)]
+          } else {
+            NA
+          }
+        })
+        bodyPos <- purrr::map_dbl(user_data$syncroTraining[-c(1,2)], function(trial_data) {
+          if (length(trial_data$averagePeriods) > 0) {
+            trial_data$bodyPos
+          } else {
+            NA
+          }
+        })
+        confidence <- purrr::map_dbl(user_data$syncroTraining[-c(1,2)], function(trial_data) {
+          if (length(trial_data$averagePeriods) > 0) {
+            trial_data$confidence
+          } else {
+            NA
+          }
+        })
+        HR_trials <- purrr::map_dbl(user_data$syncroTraining[-c(1,2)], function(trial_data) {
+          if (length(trial_data$recordedHR) > 0) {
+            mean(trial_data$recordedHR, na.rm = T)
+          } else {
+            NA
+          }
+        })
+        
+        time_trials <- purrr::map_dbl(user_data$syncroTraining[-c(1,2)], function(trial_data) {
+          if (length(trial_data$instantPeriods) > 0) {
+            sum(trial_data$instantPeriods)
+          } else {
+            NA
+          }
+        })
+        
+        engagement_trials <- purrr::map_dbl(user_data$syncroTraining[-c(1,2)], function(trial_data) {
+          if (length(trial_data$currentDelays) > 0) {
+            length(unique(trial_data$currentDelays))
+          } else {
+            NA
+          }
+        })
+        # are there at least 4 instantPeriods in each trial
+        trial_goodeffort <- purrr::map_dbl(user_data$syncroTraining[-c(1,2)], function(trial_data) {
+          if (length(trial_data$instantPeriods) > 4) {
+            T
+          } else {
+            F
+          }
+        })
+        
+        # #HRV analysis to control for individual diff
+        ibi <- 60/user_data$baselines[[length(user_data$baselines)]]$instantBpms
+        hrv_baseline <- CreateHRVData(Verbose = FALSE)
+        hrv_baseline <- LoadBeatVector(hrv_baseline, cumsum(ibi))
+        hrv_baseline <- BuildNIHR(hrv_baseline)
+        hrv_baseline <- FilterNIHR(hrv_baseline)
+        hrv_baseline<- CreateTimeAnalysis(hrv_baseline)
+        hrv_sdnn <- hrv_baseline$TimeAnalysis[[1]]$SDNN
+        hrv_rmssd <- hrv_baseline$TimeAnalysis[[1]]$rMSSD
+        hrv_pnn50 <- hrv_baseline$TimeAnalysis[[1]]$pNN50
+        taskdate<-user_data$baselines[[length(user_data$baselines)]]$date
+        # browser()
+        #delays<-delays[!is.na(delays)]
+        #periods<-periods[!is.na(periods)]
+        valid_trials = (!is.na(periods)) & (!is.na(delays)) & trial_goodeffort
+        periods = periods[valid_trials]
+        delays = delays[valid_trials]
+        
+        n_needed_trials = 16
+
+        angles <- becca_argomenti(delays, periods)
+        bodyPos<-bodyPos[!is.na(bodyPos)]
+        bodyPos<-bodyPos[bodyPos != -1]
+        confidence<-confidence[!is.na(confidence)]
+        confidence<-confidence[confidence != -1]
+        
+        if (length(delays) == length(periods) && length(periods) >= n_needed_trials) {
+          ## take first 1:n_needed_trials
+          my_selection = seq(1:n_needed_trials)
+          periods = periods[my_selection]
+          delays = delays[my_selection]
+          time_trials = time_trials[my_selection]
+          engagement_trials = engagement_trials[my_selection]
+          trial_goodeffort = trial_goodeffort[my_selection]
+          
+
+          list(similarity = calc_similarity(delays, periods),
+               id =  user_data$participantID,
+               confidence_median =median(confidence),
+               confidence_mean = mean(confidence),
+               confidence_sd = sd(confidence),
+               # removed angles as not used
+               #angles_min = min(angles),
+               #angles_max = max(angles),
+               # below not subset as delays/periods above and not used so removed
+               #bodyPos= getmode(bodyPos),
+               count_bodyPos = length(unique(bodyPos)),
+               mean_delays = mean(Arg(calc_similarity_complex(delays,periods))/(2*pi)),
+               mean_angle = Arg(calc_similarity_complex(delays, periods)),
+               delays_ms = Arg(calc_similarity_complex(delays,periods))/(2*pi),
+               sd_delays = sd(Arg(calc_similarity_complex(delays,periods)))/(2*pi),
+               mean_HR = mean(HR_trials, na.rm = TRUE),
+               hrv_sdnn = hrv_sdnn,
+               hrv_rmssd = hrv_rmssd,
+               hrv_pnn50 = hrv_pnn50,
+               original_index = user_index,
+               mean_time_trials = mean(time_trials),
+               sd_time_trials = sd(time_trials),
+               mean_engagement_trials = mean(engagement_trials),
+               sd_engagement_trials = sd(engagement_trials),
+               tot_time = sum(time_trials),
+               count_validtrials = sum(valid_trials),
+               count_usedTrials = length(my_selection),
+               taskdate= taskdate
+               )
+        } else {
+          null_row
+        }
+      } else {
+        null_row
+      }
+
+  }
+ )
+
+Sims<- similarities_users_df %>% filter( !is.na(similarity))
+
+
+Nparticipants<-nrow(Sims)
+
+
+
+```
+
+# Summary Statistics
+`r Nparticipants` individuals successfully provided data through the app and prolific system. Similarity scores were calculated using the first `r n_needed_trials` trials for each individual. Summary statistics for similarity scores and other metrics are presented below.
+
+```{r include=FALSE}
+T1 <- tableby(
+  ~ similarity +
+    confidence_mean +
+    mean_HR +
+    hrv_sdnn +
+    hrv_rmssd +
+    hrv_pnn50 +
+    mean_time_trials +
+    mean_engagement_trials,
+  data = Sims
+)
+```
+
+```{r echo=FALSE, results='asis'}
+summary(
+  T1,
+  labelTranslations = list(
+    similarity = "Similarity",
+    confidence_mean = "Mean confidence score",
+    mean_HR = "Mean heart rate",
+    hrv_sdnn = "SDNN",
+    hrv_rmssd = "RMSSD",
+    hrv_pnn50 = "PNN50",
+    mean_time_trials = "Time spent on each trial",
+    mean_engagement_trials = "Mean engagement trials"
+  )
+)
+```
+
+
+```{r echo=F}
+## To compare participants responses to a randomly generated distribution, create random distribution 
+#PLV
+max_iter <- 5000
+
+similarities_random20 <- purrr::map_dbl(1:max_iter, function(i) {
+  n <- 16
+  periods <- runif(n, 0.5, 1.5)
+  delays <- purrr::map_dbl(periods, function(p) runif(1, 0, p))
+  calc_similarity(delays, periods)
+})
+```
+
+# Were participant responses non-random?
+
+```{r include=F}
+#plot the PDF distribution
+Dp<-ggplot() +
+  geom_density(aes(similarities_random20, color="Simulated responses")) +
+  geom_density(aes(Sims$similarity, color="Real responses")) +scale_color_manual( values=c("black","red")) +
+  labs(color="Distribution") + theme_pubr(legend = c(0.85,0.85)) +xlab("Similarity Score") +ylab("Density")
+
+```
+
+
+```{r include=FALSE}
+## run wilcox test to compare distributions 
+wilcox_model <- wilcox.test(Sims$similarity, similarities_random20)
+
+# calculate r (effect size for wilcox test)
+N <- nrow(Sims) + length(similarities_random20)
+z <- qnorm(wilcox_model$p.value/2)
+r <- z/sqrt(N)
+
+
+## Format p value for reporting in text
+Wp<-ifelse(wilcox_model$p.value<=.001, "<.001", paste0("=",round(wilcox_model$p.value, digits=3), sep=""))
+
+```
+
+```{r echo=FALSE, fig.cap="Probability density function of data from simulated participants responding at random (red line) and real participants’ data (black line)."}
+Dp
+knitr::kable(tidy(wilcox_model))
+
+```
+
+By comparing the responses from the participants to a randomly generated distribution (**`r toString(max_iter)`** iterations) we can see if the participants were answering randomly. A wilcox test indicates that the distribution of participants responses is different to the randomly generated distribution **(Z= `r toString(round(z, digits=3))`, p`r toString(Wp)`, r= `r toString(round(r, digits=3))`)**. This suggests participants were not responding randomly.
+
+```{r include=FALSE}
+## Define gaussian mixture models in order to define bayes factor labels
+
+#gaussian mixture models
+similarities_plv <- Sims$similarity
+# similarities_plv <- Sims[ , "similarity"]
+
+model<-EMGauss(similarities_plv, K=2)
+
+non_interoceptive_mean = model$Means[1]
+non_interoceptive_sd = model$SDs[1]
+interoceptive_mean = model$Means[2]
+interoceptive_sd = model$SDs[2]
+
+z_score_non_intero = sapply(similarities_plv, function(x) (x - non_interoceptive_mean)/non_interoceptive_sd)
+z_score_intero = sapply(similarities_plv, function(x) (x - interoceptive_mean)/interoceptive_sd)
+
+is_subject_interoceptive = abs(z_score_intero) < abs(z_score_non_intero)
+table(is_subject_interoceptive)
+
+is_subject_intero = abs(z_score_intero)/abs(z_score_non_intero) > 3.0
+is_subject_non_intero = abs(z_score_non_intero)/abs(z_score_intero) > 3.0
+
+table(is_subject_intero)
+table(is_subject_non_intero)
+
+#probability of having a value at least this far from the mean
+prob_non_intero <- 1 - (pnorm(abs(z_score_non_intero)) - pnorm(-abs(z_score_non_intero)))
+                        
+prob_intero <- 1 - (pnorm(abs(z_score_intero)) - pnorm(-abs(z_score_intero)))
+
+bf_intero <-  prob_intero/prob_non_intero
+bf_non_intero <-  prob_non_intero/prob_intero
+
+plot(log(bf_intero))
+abline(h=3)
+
+plot(log(bf_non_intero))
+abline(h=3)
+
+#plots of probabilities
+plot(density(prob_non_intero), 
+     main = "Probabilities of being non-interoceptive",
+     xlab = "",
+     col = "red")
+plot(density(prob_intero),
+     main = "Probabilities of being interoceptive",
+     xlab = "",
+     col = "blue")
+```
+
+# Classifying participants as interoceptive or non-interoceptive
+
+In order to classify participants as either interoceptive or non-interoceptive, a gaussian mixture model with 2 mixtures was applied to the similarity values following the assumption that the population is made of two subpopulations; interoceptive and non-interoceptive participants. Briefly, a Z-score for each participant was calculated for the interoceptive and non-interoceptive distributions separately, and these Z-scores were used to calculate the probability of an individual being interoceptive or non-interoceptive. The estimated probability distributions, along with the distribution of real responses can be seen below.
+
+
+```{r echo=FALSE, fig.cap = "Probability density function of real participants’ data (black line), estimated distribution of non-interoceptive participants (red line) and interoceptive participants  (blue line).", fig.align="center"}
+#plot of real answers and distributions
+x <- seq(0, 1, length=100)
+NonI <- dnorm(x, non_interoceptive_mean, non_interoceptive_sd)
+
+Intero <- dnorm(x, interoceptive_mean, interoceptive_sd)
+
+PDFplot<-ggplot() +
+  geom_density(aes(x=Sims$similarity, color="Real Answers")) +
+  geom_line(aes(x=x, y=NonI, color="Non-Interoceptive"), linetype="dashed") +
+  geom_line(aes(x=x, y=Intero, color="Interoceptive"), linetype="dashed") +
+  scale_color_manual( values=c("blue","red","black")) +
+  labs(color="Distribution") + theme_pubr(legend = c(0.9,0.85)) +xlab("Similarity Score") +ylab("Density")
+
+PDFplot
+
+knitr::kable(tidy(wilcox_model))
+
+```
+
+Comparing the probabilities of a participant being Interoceptive or Non-Interoceptive allows a Bayes Factor (BF) to be calculated as the ratio of an individual belonging to one of the two distributions, over the probability of belonging to the other distribution. This allows each participant to be classified as being Interoceptive, Non-Interoceptive, or Unknown (Unclassifed). This classification was carried out using three BF thresholds, >3, >10 and >30.
+
+``` {r include=FALSE}
+## Generating the dataframes with BF 3, 10 and 30 (T1)
+## add bayes factors for interoceptive or non interoceptive to dataframe
+Sims$bf_intero <- bf_intero
+Sims$bf_non_intero <- bf_non_intero
+
+## BF3
+## Assign Labels based on a bayes factor threshold >3
+
+# Assign "Interoceptive participants" to individuals with bf_intero > 3. Assign
+# "Unknown" to participants with bf_intero <=3
+Sims$intero_bf_label_3 <-
+  ifelse(Sims$bf_intero > 3, "Interoceptive participants", "Unknown")
+
+
+# Assign "Non Interoceptive participants" to individuals with bf_non_intero > 3. Assign
+# "Unknown" to participants with bf_non_intero <=3
+Sims$intero_non_bf_label_3 <-
+  ifelse(Sims$bf_non_intero > 3,
+         "Non interoceptive participants",
+         "Unknown")
+
+
+## Assign Final Label for interceptive or non interceptive by checking values in intero_bf_label_3
+## and intero_non_bf_label_3
+Sims$intero_bayes_3 <-
+  ifelse(
+    Sims$intero_bf_label_3 == "Interoceptive participants",
+    "Interoceptive participants",
+    "Non interoceptive participants"
+  )
+
+### Assign Final Unknown label to individuals where there is not sufficient evidence
+## to indicate if interceptive or non-interoceptive
+Sims$intero_bayes_3 <-
+  ifelse(
+    Sims$intero_bf_label_3 == "Unknown" &
+      Sims$intero_non_bf_label_3 == "Unknown",
+    "Unknown",
+    Sims$intero_bayes_3
+  )
+
+## remove individuals with Unknown final label (uncomment to remove)
+# Sims_bayes <- Sims %>% filter(intero_bayes_3 != "Unknown")
+
+## if not removing unknowns use this line
+Sims_bayes<-Sims
+
+
+#BF 10
+## Assign Labels based on a bayes factor threshold >10
+
+# Assign "Interoceptive participants" to individuals with bf_intero > 10. Assign
+# "Unknown" to participants with bf_intero <=10
+Sims$intero_bf_label_10 <-
+  ifelse(Sims$bf_intero > 10, "Interoceptive participants", "Unknown")
+
+
+# Assign "Non Interoceptive participants" to individuals with bf_non_intero > 10. Assign
+# "Unknown" to participants with bf_non_intero <=10
+Sims$intero_non_bf_label_10 <-
+  ifelse(Sims$bf_non_intero > 10,
+         "Non interoceptive participants",
+         "Unknown")
+
+
+## Assign Final Label for interceptive or non interceptive by checking values in intero_bf_label_10
+## and intero_non_bf_label_10
+Sims$intero_bayes_10 <-
+  ifelse(
+    Sims$intero_bf_label_10 == "Interoceptive participants",
+    "Interoceptive participants",
+    "Non interoceptive participants"
+  )
+
+### Assign Final Unknown label to individuals where there is not sufficient evidence
+## to indicate if interceptive or non-interoceptive
+Sims$intero_bayes_10 <-
+  ifelse(
+    Sims$intero_bf_label_10 == "Unknown" &
+      Sims$intero_non_bf_label_10 == "Unknown",
+    "Unknown",
+    Sims$intero_bayes_10
+  )
+
+## remove individuals with Unknown final label (unvomment to remove)
+# Sims_bayes_10 <- Sims %>% filter(intero_bayes_10 != "Unknown")
+
+## if not removing unknowns use this line
+Sims_bayes_10<-Sims
+
+
+#BF 30
+## Assign Labels based on a bayes factor threshold >30
+
+# Assign "Interoceptive participants" to individuals with bf_intero > 30. Assign
+# "Unknown" to participants with bf_intero <=30
+Sims$intero_bf_label_30 <-
+  ifelse(Sims$bf_intero > 30, "Interoceptive participants", "Unknown")
+
+
+# Assign "Non Interoceptive participants" to individuals with bf_non_intero > 30. Assign
+# "Unknown" to participants with bf_non_intero <=30
+Sims$intero_non_bf_label_30 <-
+  ifelse(Sims$bf_non_intero > 30,
+         "Non interoceptive participants",
+         "Unknown")
+
+
+## Assign Final Label for interceptive or non interceptive by checking values in intero_bf_label_30
+## and intero_non_bf_label_30
+Sims$intero_bayes_30 <-
+  ifelse(
+    Sims$intero_bf_label_30 == "Interoceptive participants",
+    "Interoceptive participants",
+    "Non interoceptive participants"
+  )
+
+### Assign Final Unknown label to individuals where there is not sufficient evidence
+## to indicate if interceptive or non-interoceptive
+Sims$intero_bayes_30 <-
+  ifelse(
+    Sims$intero_bf_label_30 == "Unknown" &
+      Sims$intero_non_bf_label_30 == "Unknown",
+    "Unknown",
+    Sims$intero_bayes_30
+  )
+
+## remove individuals with Unknown final label (unvomment to remove)
+# Sims_bayes_30 <- Sims %>% filter(intero_bayes_30 != "Unknown")
+
+## if not removing unknowns use this line
+Sims_bayes_30<-Sims
+
+# numbers in each interoceptive category at BF3
+table(Sims_bayes$intero_bayes_3)
+
+# numbers in each interoceptive category at BF10
+table(Sims_bayes_10$intero_bayes_10)
+
+# numbers in each interoceptive category at BF30
+table(Sims_bayes_30$intero_bayes_30)
+```
+
+```{r echo=FALSE, results='asis'}
+## create table of classifications at each BF threshold
+T2<-tableby(~intero_bayes_3+intero_bayes_10+intero_bayes_30, data=Sims_bayes_30)
+
+summary(T2, labelTranslations= list(
+  intero_bayes_3="BF > 3",
+  intero_bayes_10="BF > 10",
+  intero_bayes_30="BF > 30"))
+
+## Create tableby summary and convert to dataframe to access values for text
+T2s<-summary(T2, labelTranslations= list(
+  intero_bayes_3="BF > 3",
+  intero_bayes_10="BF > 10",
+  intero_bayes_30="BF > 30"), text=NULL)
+
+
+T2df<-as.data.frame(T2s)
+
+```
+
+At a BF threshold of >3 **`r toString(T2df[2,2])`** participants were classified as interoceptive. Previous studies using multi-delay heartbeat detection tasks estimate that approximately 1/3 of healthy participants are interoceptive.
+
+### Correlation between Similarity scores and heart rate variability
+
+```{r include=FALSE}
+Sim_HRV<- Sims_bayes_30 %>% dplyr::select(similarity, mean_HR, hrv_sdnn, hrv_rmssd, hrv_pnn50)
+MVNres<-MVN::mvn(Sim_HRV)
+
+NormRes<-ifelse(grepl("NO",MVNres$MVN), "non-normal", "normal")
+
+Sim_HRV_corS<-cor_test(Sim_HRV, vars = similarity, vars2=c("mean_HR","hrv_sdnn","hrv_rmssd","hrv_pnn50"), method = "spearman")
+
+Sim_HRV_corP<-cor_test(Sim_HRV, vars = similarity, vars2=c("mean_HR","hrv_sdnn","hrv_rmssd","hrv_pnn50"), method = "pearson")
+
+Sim_HRV_cor<-bind_rows(Sim_HRV_corP, Sim_HRV_corS)
+
+Sim_HRV_cor<- Sim_HRV_cor %>% dplyr::select(-c(statistic, conf.low,conf.high)) %>% arrange(desc(var2))
+names(Sim_HRV_cor)<-c("Var. 1", "Var. 2", "r", "p-value", "Type")
+
+Sim_HRV_cor$`Var. 1`<-rep(c("Similarity"))
+
+Sim_HRV_cor$`Var. 2`<-c("Mean Heart Rate", "Mean Heart Rate",
+                        "SDNN", "SDNN",
+                        "RMSSD", "RMSSD",
+                        "PNN50", "PNN50")
+
+### Correlation in interoceptive participants
+Int_HRV<-Sims_bayes_30 %>% filter( intero_bayes_3 =="Interoceptive participants") %>%
+  dplyr::select(similarity, mean_HR, hrv_sdnn, hrv_rmssd, hrv_pnn50)
+
+Int_HRV_corS<-cor_test(Int_HRV, vars = similarity, vars2=c("mean_HR","hrv_sdnn","hrv_rmssd","hrv_pnn50"), method = "spearman")
+
+Int_HRV_corP<-cor_test(Int_HRV, vars = similarity, vars2=c("mean_HR","hrv_sdnn","hrv_rmssd","hrv_pnn50"), method = "pearson")
+
+Int_HRV_cor<-bind_rows(Int_HRV_corP, Int_HRV_corS)
+
+Int_HRV_cor<- Int_HRV_cor %>% dplyr::select(-c(statistic, conf.low,conf.high)) %>% arrange(desc(var2))
+names(Int_HRV_cor)<-c("Var. 1", "Var. 2", "r", "p-value", "Type")
+
+Int_HRV_cor$`Var. 1`<-rep(c("Similarity"))
+
+Int_HRV_cor$`Var. 2`<-c("Mean Heart Rate", "Mean Heart Rate",
+                        "SDNN", "SDNN",
+                        "RMSSD", "RMSSD",
+                        "PNN50", "PNN50")
+
+
+### Correlation in Non-interoceptive participants
+Non_HRV<-Sims_bayes_30 %>% filter( intero_bayes_3 =="Non interoceptive participants") %>%
+  dplyr::select(similarity, mean_HR, hrv_sdnn, hrv_rmssd, hrv_pnn50)
+
+Non_HRV_corS<-cor_test(Non_HRV, vars = similarity, vars2=c("mean_HR","hrv_sdnn","hrv_rmssd","hrv_pnn50"), method = "spearman")
+
+Non_HRV_corP<-cor_test(Non_HRV, vars = similarity, vars2=c("mean_HR","hrv_sdnn","hrv_rmssd","hrv_pnn50"), method = "pearson")
+
+Non_HRV_cor<-bind_rows(Non_HRV_corP, Non_HRV_corS)
+
+Non_HRV_cor<- Non_HRV_cor %>% dplyr::select(-c(statistic, conf.low,conf.high)) %>% arrange(desc(var2))
+names(Non_HRV_cor)<-c("Var. 1", "Var. 2", "r", "p-value", "Type")
+
+Non_HRV_cor$`Var. 1`<-rep(c("Similarity"))
+
+Non_HRV_cor$`Var. 2`<-c("Mean Heart Rate", "Mean Heart Rate",
+                        "SDNN", "SDNN",
+                        "RMSSD", "RMSSD",
+                        "PNN50", "PNN50")
+
+
+```
+
+When we correlated the heart rate variability metrics against similarity scores, we find that only mean heart rate was correlated with similarity. Other heart rate variability metrics were not correlated with similarity scores. This was also the case when correlations were performed in interoceptive and non-interoceptive participants separately.
+
+### All participants
+
+```{r echo=FALSE}
+knitr::kable(Sim_HRV_cor, digits=3)
+```
+
+### Interoceptive Participants (BF>3)
+
+```{r echo=FALSE}
+knitr::kable(Int_HRV_cor, digits=3)
+```
+
+### Non-Interoceptive Participants (BF>3)
+
+```{r echo=FALSE}
+knitr::kable(Non_HRV_cor, digits=3)
+```
+
+# Correlation betwen Similarity scores and engagement metrics
+
+```{r include=FALSE}
+Sim_Engage<- Sims_bayes_30 %>% dplyr::select(similarity, mean_time_trials, mean_engagement_trials )
+MVNres<-MVN::mvn(Sim_Engage)
+
+NormRes<-ifelse(grepl("NO",MVNres$MVN), "non-normal", "normal")
+
+Sim_Engage_corS<-cor_test(Sim_Engage, vars = similarity, vars2=c("mean_time_trials", "mean_engagement_trials"), method = "spearman")
+
+Sim_Engage_corP<-cor_test(Sim_Engage, vars = similarity, vars2=c("mean_time_trials", "mean_engagement_trials"), method = "pearson")
+
+Sim_Engage_cor<-bind_rows(Sim_Engage_corP, Sim_Engage_corS)
+
+Sim_Engage_cor<- Sim_Engage_cor %>% dplyr::select(-c(statistic, conf.low,conf.high)) %>% arrange(desc(var2))
+names(Sim_Engage_cor)<-c("Var. 1", "Var. 2", "r", "p-value", "Type")
+
+Sim_Engage_cor$`Var. 1`<-rep(c("Similarity"))
+
+Sim_Engage_cor$`Var. 2`<-c("Mean time taken on trials", "Mean time taken on trials",
+                           "Mean engagement trials", "Mean engagement trials")
+
+## Correlation in interoceptive participants
+Int_Engage<-Sims_bayes_30 %>% filter( intero_bayes_3 =="Interoceptive participants") %>%
+  dplyr::select(similarity, "mean_time_trials", "mean_engagement_trials")
+
+Int_Engage_corS<-cor_test(Int_Engage, vars = similarity, vars2=c("mean_time_trials", "mean_engagement_trials"), method = "spearman")
+
+Int_Engage_corP<-cor_test(Int_Engage, vars = similarity, vars2=c("mean_time_trials", "mean_engagement_trials"), method = "pearson")
+
+Int_Engage_cor<-bind_rows(Int_Engage_corP, Int_Engage_corS)
+
+Int_Engage_cor<- Int_Engage_cor %>% dplyr::select(-c(statistic, conf.low,conf.high)) %>% arrange(desc(var2))
+names(Int_Engage_cor)<-c("Var. 1", "Var. 2", "r", "p-value", "Type")
+
+Int_Engage_cor$`Var. 1`<-rep(c("Similarity"))
+
+Int_Engage_cor$`Var. 2`<-c("Mean time taken on trials", "Mean time taken on trials",
+                           "Mean engagement trials", "Mean engagement trials")
+
+
+### Correlation in Non-interoceptive participants
+Non_Engage<-Sims_bayes_30 %>% filter( intero_bayes_3 =="Non interoceptive participants") %>%
+  dplyr::select(similarity,"mean_time_trials", "mean_engagement_trials")
+
+Non_Engage_corS<-cor_test(Non_Engage, vars = similarity, vars2=c("mean_time_trials", "mean_engagement_trials"), method = "spearman")
+
+Non_Engage_corP<-cor_test(Non_Engage, vars = similarity, vars2=c("mean_time_trials", "mean_engagement_trials"), method = "pearson")
+
+Non_Engage_cor<-bind_rows(Non_Engage_corP, Non_Engage_corS)
+
+Non_Engage_cor<- Non_Engage_cor %>% dplyr::select(-c(statistic, conf.low,conf.high)) %>% arrange(desc(var2))
+names(Non_Engage_cor)<-c("Var. 1", "Var. 2", "r", "p-value", "Type")
+
+Non_Engage_cor$`Var. 1`<-rep(c("Nonilarity"))
+
+Non_Engage_cor$`Var. 2`<-c("Mean time taken on trials", "Mean time taken on trials",
+                           "Mean engagement trials", "Mean engagement trials")
+```
+
+Similarly, correlating engagement metrics with similarity reveals that neither mean time spent on trials or mean engagement trials are associated with similarity scores. This is the case in both the overall sample, and when correlations are carried out in interoceptive and non-interoceptive participants separately.
+
+### All participants
+
+```{r echo=FALSE}
+knitr::kable(Sim_Engage_cor, digits=3)
+```
+
+### Interoceptive Participants (BF>3)
+
+```{r echo=FALSE}
+knitr::kable(Int_Engage_cor, digits=3)
+```
+
+### Non-Interoceptive Participants (BF>3)
+
+```{r echo=FALSE}
+knitr::kable(Non_Engage_cor, digits=3)
+```
+
+# Differences in HRV / engagement / confidence between interoceptive / non-interoceptive participants (BF>3)
+
+```{r include=FALSE}
+T3<-tableby( intero_bayes_3~
+               similarity +
+    confidence_mean +
+    mean_HR +
+    hrv_sdnn +
+    hrv_rmssd +
+    hrv_pnn50 +
+    mean_time_trials +
+    mean_engagement_trials, data= Sims_bayes_30
+         )
+```
+
+```{r echo=FALSE, results='asis'}
+summary(
+  T3,
+  labelTranslations = list(
+    intero_bayes_3="Classification",
+    similarity = "Similarity",
+    confidence_mean = "Mean confidence score",
+    mean_HR = "Mean heart rate",
+    hrv_sdnn = "SDNN",
+    hrv_rmssd = "RMSSD",
+    hrv_pnn50 = "PNN50",
+    mean_time_trials = "Time spent on each trial",
+    mean_engagement_trials = "Mean engagement trials"
+  )
+)
+
+T3df<-as.data.frame(summary(
+  T3,
+  labelTranslations = list(
+    intero_bayes_3="Classification",
+    similarity = "Similarity",
+    confidence_mean = "Mean confidence score",
+    mean_HR = "Mean heart rate",
+    hrv_sdnn = "SDNN",
+    hrv_rmssd = "RMSSD",
+    hrv_pnn50 = "PNN50",
+    mean_time_trials = "Time spent on each trial",
+    mean_engagement_trials = "Mean engagement trials"
+  ), text=TRUE
+))
+```
+
+One way ANOVA indicated that there was a difference in mean heart rate between participants classifed as Interoceptive, Non-Interoceptive and Unknown. 
+Plotting mean heart rate shows that interoceptive individuals have a higher mean heart rate than non-interoceptive participants.
+
+```{r echo=FALSE, fig.cap = "Difference in mean heart rate between participants classified as interoceptive, non-interoceptive or unknown.", fig.align="center"}
+my_comparisons= list(
+  c("Interoceptive participants","Non interoceptive participants"),
+  c("Non interoceptive participants", "Unknown"),
+  c("Interoceptive participants", "Unknown"))
+
+Mean_HR_P <-
+  ggerrorplot(Sims_bayes_30,
+              "intero_bayes_3",
+              "mean_HR",
+              color = "intero_bayes_3",
+              desc_stat = "mean_ci") + stat_compare_means(
+                comparisons = my_comparisons,
+                label.y = c(89, 86, 91),
+                label = "p.format",
+                method = "t.test"
+              )
+
+ggpar(
+  Mean_HR_P,
+  legend = "none",
+  xlab = "Classification",
+  ylab = "Mean Heart Rate (95% CI)",
+  font.xtickslab = 11,
+  caption = "p-values from t-test"
+) +
+  scale_x_discrete(
+    labels = c(
+      "Interoceptive \n participants",
+      "Non-Interoceptive \n participants",
+      "Unknown \n participants"
+    )
+  )
+```
+
