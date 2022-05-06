@@ -1,0 +1,29 @@
+[
+	{"type":"ID"},
+    {"type":"Onboarding", "pages":[
+            {"type":"Text", "data":{"text": "_onboarding1_content"}},
+            {"type":"Text", "data":{"text": "_onboarding2_content"}},
+            {"type":"BaselineIntro"}
+        ]
+    },
+    {"type":"Baseline"},
+    {"type":"Onboarding", "pages":[
+            {"type":"Text", "data":{"text":"_onboarding3_content"}},
+            {"type":"Video", "data":{"text":"_onboardingvideo1_content","video": "heart_beat_sound_out_sync"}},
+            {"type":"Video", "data":{"text":"_onboardingvideo2_content","video": "heartbeats_in_sync"}},
+            {"type":"Text", "data":{"text": "_onboarding4_content"}},
+            {"type":"Text", "data":{"text": "_onboarding5_content"}},
+            {"type":"Video", "data":{"video": "video_for_MAD_task_final"}},
+            {"type":"Image", "data":{"text": "_onboardingimage1_content","image": "confidence_screenshot"}},
+            {"type":"Image", "data":{"text": "_onboardingimage2_content","image": "mannequin_coloured"}},
+            {"type":"Text", "data":{"text": "_onboarding6_content"}},
+            {"type":"Text", "data":{"text": "_onboarding9_content"}}
+        ]
+    },
+    {"type": "Trial", "trials": 20, "pages":[
+        {"type":"Dial"},
+        {"type":"Confidence"},
+        {"type":"Body", "appears":{"every": 4}}
+    ]},
+    {"type": "End"}
+]

@@ -1,0 +1,14 @@
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+identifier_name:
+  excluded: # excluded via string array
+    - id
+    - URL
+    - h
+    - s
+    - l
+    - a
+    - x
+    - y
+    - i
+line_length: 150

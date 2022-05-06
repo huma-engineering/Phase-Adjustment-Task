@@ -1,0 +1,92 @@
+/*
+  Localizable.strings
+  InteroceptionProto
+
+  Created by Matteo Puccinelli on 02/12/2019.
+  Copyright © 2019 BioBeats. All rights reserved.
+*/
+
+//general
+"_button_confirm_label" = "Confirm";
+"_button_continue_label" = "Continue";
+"_button_back_label" = "Back";
+"_button_okay" = "Ok";
+
+//participantId
+"_participantId" = "Enter participant ID:";
+
+//participantId
+"_dataExport" = "Data Export";
+"_exportStartOver" = "Start Over";
+
+"_baselineIntroduction" = "Record Baseline";
+
+//Onboarding
+"_onboarding_continue_button_label" = "Continue";
+"_onboarding1_content" = "How well can you match a sound with your heartbeat?\n\nLet’s find out!";
+"_onboarding2_content" = "First, find a quiet place where you can comfortably sit upright with your earphones on for around 10 minutes. We will begin by capturing a couple of minutes of your heart rate, to get a sense for how your heart does its thing.";
+
+"_onboarding3_content" = "Ok, thanks! In the main task, you will be asked to place your finger on the phone camera (on the back) so that the app can read your heartbeat.\n\nOnce your finger is in position, you will hear a series of sounds.\n\nEach sound actually represents one of your own heartbeats!";
+"_onboarding4_content" = "Your objective is to find the point on the dial where the heartbeat and sound is in sync, by turning the dial left or right.";
+
+
+
+"_onboarding5_content" = "Want to know how this might look like?\n\nPress “continue” to watch a short tutorial.";
+
+"_onboarding6_content" = "For the duration of this task, please do not actively try to feel your pulse with your hand; we are only interested in what you feel!\n\nWhen you are ready to start, please sit comfortably upright with your earphones on and press “continue”.";
+
+
+
+// video screens
+"_onboardingvideo1_content" = "It might seem like there is a delay between the sounds and the heartbeats you feel.\n\nPlay the video below to hear an example!";
+"_onboardingvideo2_content" = "In order to rectify the delay, you will be asked to move a dial until the sounds are in sync with your heartbeats.\n\nPlay the video below to hear an example!";
+
+// image screens
+"_onboardingimage1_content" = "After you have matched the sound with your heartbeat, you will be asked how sure you are about the answer you gave.\n\nPress “confirm” then “continue” to start the following trial. In this task, there will be 20 trials in total.";
+
+"_onboardingimage2_content" = "You can feel your heartbeat in different places in your body, such as your chest or your fingers.\n\nYou will be asked to indicate where you felt your heartbeat on a body map (like the one below) once every 5 trials.\n\nYou can choose any of the highlighted body parts or you can select \"nowhere\" if you haven't felt your heartbeat in any particular place.";  
+
+
+
+// used on the practice screen
+"_onboarding9_content" = "You will now get a chance to do two practice trials.\n\nFocus on feeling your heartbeat and try to match the sounds to your own heartbeat. ";
+
+
+
+//How to
+"_how_to_title" = "Place your finger on the phone camera and stay as still as possible during the trial.";
+"_how_to_body1" = "Place your finger as shown in the picture.";
+"_how_to_body2" = "Please, make sure your finger is gently covering your phone's camera and flash to continue.";
+
+//TrialScreen
+"_readjust_your_grip_title" = "Readjust your grip";
+"_readjust_your_grip_body" = "Please make sure your finger is gently covering your phone's camera and flash to continue.";
+"_trial_instruction" = "Move the dial until the tone matches your heart-beat, to the best of your perception. Please press confirm when you are done.";
+"_anticlockwise" = "Decrease delay";
+"_clockwise" = "Increase delay";
+
+"_practiceTrial" = "PRACTICE TRIAL\n";
+"_flash_not_working_title" = "Flash not working";
+"_flash_not_working_body" = "The Flash doesn't appear to be working. Maybe the phone has over-heated...?";
+
+//ConfidenceratingScreen
+"_rating_screen_title" = "How confident are you that the tone matched you heart-beat?";
+"_rating_screen_lowest_confidence" = "Not at all confident";
+"_rating_screen_highest_confidence" = "Extremely confident";
+
+//Mannequind
+"_mannequin_title" = "In the last run, where did you feel your heart-beat? Tap on the drawing below to identify the relevant area.";
+"_mannequin_you_selected" = "You selected";
+"_mannequin_nowhere_button" = "Nowhere";
+
+//Final screen
+"_final_body" = "That was the last trial. You can now press the Exit button to get your participation code.";
+"_thank_you_prolific_redirect" = "Thank you for your time - the button below will redirect you to Prolific. In case the code isn't automatically entered, please enter YFECRJH5 to complete.";
+"_no_email_title" = "There is no email address setup. Please setup an email address then try and send.";
+"_no_email_body" = "There is no email address setup. Please setup an email address then try and send.";
+
+//baseline
+"_checking" = "Checking your heartbeat";
+"_seconds_left_%d" = "Seconds left: %0d";
+"_baseline_intro_title" = "Getting ready to check your heartbeat";
+"_baseline_intro_body" = "We will shortly turn on the LED Flash and camera on this phone, and will use it to take your heart rate. Please place your index finger across both camera and flash.";

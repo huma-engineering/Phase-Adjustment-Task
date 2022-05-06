@@ -1,0 +1,1184 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5D071D3323F2E11B00A0D6DA /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D071D2F23F2E11B00A0D6DA /* UserManager.swift */; };
+		5D071D3423F2E11B00A0D6DA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D071D3023F2E11B00A0D6DA /* User.swift */; };
+		5D071D3523F2E11B00A0D6DA /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D071D3123F2E11B00A0D6DA /* UserDetails.swift */; };
+		5D071D3823F2E30300A0D6DA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D071D3723F2E30300A0D6DA /* ActivityIndicator.swift */; };
+		5D071D3A23F2E33700A0D6DA /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D071D3923F2E33700A0D6DA /* ActivityIndicatorView.swift */; };
+		5D1E465D23DADC8200F3A8DE /* BaselineIntroScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1E465C23DADC8200F3A8DE /* BaselineIntroScreen.swift */; };
+		5D28F0F523FB688E00928FEA /* OnboardingVideoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D28F0F423FB688E00928FEA /* OnboardingVideoScreen.swift */; };
+		5D28F0F723FB69D500928FEA /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D28F0F623FB69D500928FEA /* PlayerView.swift */; };
+		5D28F0F923FB69F400928FEA /* PlayerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D28F0F823FB69F400928FEA /* PlayerUIView.swift */; };
+		5D28F0FD23FB6AB600928FEA /* heart_beat_sound_out_sync.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5D28F0FC23FB6AB600928FEA /* heart_beat_sound_out_sync.mp4 */; };
+		5D28F10223FB868300928FEA /* heartbeats_in_sync.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5D28F10023FB868300928FEA /* heartbeats_in_sync.mp4 */; };
+		5D28F10323FB868300928FEA /* video_for_MAD_task_final.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5D28F10123FB868300928FEA /* video_for_MAD_task_final.mp4 */; };
+		5D28F10523FB886700928FEA /* OnboardingMainVideoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D28F10423FB886700928FEA /* OnboardingMainVideoScreen.swift */; };
+		5D28F10723FB8E2400928FEA /* OnboardingImageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D28F10623FB8E2400928FEA /* OnboardingImageScreen.swift */; };
+		5D2B597723D983B00013C635 /* BaselineDataScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2B597623D983B00013C635 /* BaselineDataScreen.swift */; };
+		5D2B597B23D9971C0013C635 /* SyncroTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2B597A23D9971C0013C635 /* SyncroTaskManager.swift */; };
+		5D330DF62459795400A73E67 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D330DF52459795400A73E67 /* ProgressBar.swift */; };
+		5D592E7B23D622C900C95210 /* ExitScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D592E7A23D622C900C95210 /* ExitScreen.swift */; };
+		5D8D45B023E00AF200518141 /* PracticeInstructionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8D45AF23E00AF200518141 /* PracticeInstructionsScreen.swift */; };
+		5DC2187323D467B500C4AEC6 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC2187223D467B500C4AEC6 /* Platform.swift */; };
+		5DC2187623D467F800C4AEC6 /* InteroceptionDataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC2187523D467F800C4AEC6 /* InteroceptionDataset.swift */; };
+		5DC2187C23D46F2D00C4AEC6 /* ParticipantIdScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC2187B23D46F2D00C4AEC6 /* ParticipantIdScreen.swift */; };
+		5DE28F7623FD3430003A8AEE /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE28F7523FD3430003A8AEE /* PlayerControlsView.swift */; };
+		5DE28F7A23FD366F003A8AEE /* PlayerContainersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE28F7923FD366F003A8AEE /* PlayerContainersView.swift */; };
+		60033A422678E1C8004854E5 /* TrialViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60033A412678E1C7004854E5 /* TrialViews.swift */; };
+		60033A472678FCC3004854E5 /* DoublePressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60033A462678FCC3004854E5 /* DoublePressButton.swift */; };
+		6006C0D3269EE87700DFD737 /* libHeartRateDetector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6006C0D1269EE87700DFD737 /* libHeartRateDetector.a */; };
+		6006C0D5269EE87700DFD737 /* libHeartRateDetector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6006C0D1269EE87700DFD737 /* libHeartRateDetector.a */; };
+		6006C0D6269EE87700DFD737 /* libHeartRateDetector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6006C0D1269EE87700DFD737 /* libHeartRateDetector.a */; };
+		6006C0D7269EE87700DFD737 /* include in Resources */ = {isa = PBXBuildFile; fileRef = 6006C0D2269EE87700DFD737 /* include */; };
+		6006C0D8269EE87700DFD737 /* include in Resources */ = {isa = PBXBuildFile; fileRef = 6006C0D2269EE87700DFD737 /* include */; };
+		6006C0D9269EE87700DFD737 /* include in Resources */ = {isa = PBXBuildFile; fileRef = 6006C0D2269EE87700DFD737 /* include */; };
+		6006C0DA269EE87700DFD737 /* include in Resources */ = {isa = PBXBuildFile; fileRef = 6006C0D2269EE87700DFD737 /* include */; };
+		6006C0DB269EEBF700DFD737 /* libHeartRateDetector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6006C0D1269EE87700DFD737 /* libHeartRateDetector.a */; };
+		6006C0DD269EF96800DFD737 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006C0DC269EF96800DFD737 /* Logging.swift */; };
+		6006C0DE269EF96800DFD737 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006C0DC269EF96800DFD737 /* Logging.swift */; };
+		6006C0DF269EF96800DFD737 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006C0DC269EF96800DFD737 /* Logging.swift */; };
+		6006C0E0269EF96800DFD737 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006C0DC269EF96800DFD737 /* Logging.swift */; };
+		6006C0E2269F311500DFD737 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006C0E1269F311500DFD737 /* DataController.swift */; };
+		6006C0E3269F311500DFD737 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006C0E1269F311500DFD737 /* DataController.swift */; };
+		6006C0E4269F311500DFD737 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006C0E1269F311500DFD737 /* DataController.swift */; };
+		6006C0E5269F311500DFD737 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006C0E1269F311500DFD737 /* DataController.swift */; };
+		6006C0E726A1D8F000DFD737 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006C0E626A1D8F000DFD737 /* SceneDelegate.swift */; };
+		6006C0E926A1E32700DFD737 /* FingerOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006C0E826A1E32700DFD737 /* FingerOverlay.swift */; };
+		604E0D8626726AF700FE68F4 /* ScreenOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604E0D8526726AF700FE68F4 /* ScreenOrder.swift */; };
+		604E0D9626736A3700FE68F4 /* screenorder.json in Resources */ = {isa = PBXBuildFile; fileRef = 604E0D9526736A3700FE68F4 /* screenorder.json */; };
+		63778F12260A592A00DA7BF7 /* highBeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 63778F10260A592900DA7BF7 /* highBeep.mp3 */; };
+		63778F13260A592A00DA7BF7 /* lowBeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 63778F11260A592A00DA7BF7 /* lowBeep.mp3 */; };
+		638CBDDD25ACB60A00C375E8 /* clickHigh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 638CBDDB25ACB60900C375E8 /* clickHigh.mp3 */; };
+		638CBDDE25ACB60A00C375E8 /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 638CBDDC25ACB60900C375E8 /* click.mp3 */; };
+		63B4B63E265BFF1F002F5DB5 /* Participants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B4B63D265BFF1F002F5DB5 /* Participants.swift */; };
+		951772832395432200B47989 /* TrialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951772822395432200B47989 /* TrialScreen.swift */; };
+		951AD78E23952C0F00D26632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951AD78D23952C0F00D26632 /* AppDelegate.swift */; };
+		951AD79323952C0F00D26632 /* InteroceptionProto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 951AD79123952C0F00D26632 /* InteroceptionProto.xcdatamodeld */; };
+		951AD79723952C1000D26632 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 951AD79623952C1000D26632 /* Assets.xcassets */; };
+		951AD79A23952C1000D26632 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 951AD79923952C1000D26632 /* Preview Assets.xcassets */; };
+		951AD79D23952C1000D26632 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951AD79B23952C1000D26632 /* LaunchScreen.storyboard */; };
+		951C43EE239A789400A9D310 /* FinalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951C43ED239A789400A9D310 /* FinalScreen.swift */; };
+		952EEA52239551AC0059BE4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 952EEA51239551AC0059BE4A /* Localizable.strings */; };
+		952EEA5B23956D410059BE4A /* Knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952EEA5A23956D410059BE4A /* Knob.swift */; };
+		952EEA5E239598D40059BE4A /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952EEA5D239598D40059BE4A /* UIUtils.swift */; };
+		952EEA622396824A0059BE4A /* ConfidenceRatingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952EEA612396824A0059BE4A /* ConfidenceRatingScreen.swift */; };
+		952EEA642397C1FD0059BE4A /* BodyPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952EEA632397C1FD0059BE4A /* BodyPartsView.swift */; };
+		9540A46B23A3CCA5003C32EB /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9540A46A23A3CCA5003C32EB /* MotionDetector.swift */; };
+		95526AA723999B8900F7A141 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95526AA623999B8900F7A141 /* Onboarding.swift */; };
+		95526AA9239A68CA00F7A141 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95526AA8239A68CA00F7A141 /* RootView.swift */; };
+		9F128AE123991DF20054BD22 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F128AE023991DF20054BD22 /* beep.mp3 */; };
+		9F5375E0239AC1100063FBDC /* InteroceptionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5375DF239AC1100063FBDC /* InteroceptionSettings.swift */; };
+		FD8D0A9D96E2A571E7F1AAB8 /* Pods_InteroceptionProto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C764C8369C350BE8C376D777 /* Pods_InteroceptionProto.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6006C0AD269DFF2200DFD737 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 951AD78223952C0F00D26632 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6006C096269DFF1F00DFD737;
+			remoteInfo = Interoceptor;
+		};
+		6006C0B8269DFF2200DFD737 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 951AD78223952C0F00D26632 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6006C096269DFF1F00DFD737;
+			remoteInfo = Interoceptor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		46F1A814D245FB3552992156 /* Pods-InteroceptionProto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InteroceptionProto.release.xcconfig"; path = "Target Support Files/Pods-InteroceptionProto/Pods-InteroceptionProto.release.xcconfig"; sourceTree = "<group>"; };
+		5D071D2823F26ED300A0D6DA /* InteroceptionDatasetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteroceptionDatasetTest.swift; sourceTree = "<group>"; };
+		5D071D2F23F2E11B00A0D6DA /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		5D071D3023F2E11B00A0D6DA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5D071D3123F2E11B00A0D6DA /* UserDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		5D071D3723F2E30300A0D6DA /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		5D071D3923F2E33700A0D6DA /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		5D1E465C23DADC8200F3A8DE /* BaselineIntroScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaselineIntroScreen.swift; sourceTree = "<group>"; };
+		5D28F0F423FB688E00928FEA /* OnboardingVideoScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingVideoScreen.swift; sourceTree = "<group>"; };
+		5D28F0F623FB69D500928FEA /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		5D28F0F823FB69F400928FEA /* PlayerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerUIView.swift; sourceTree = "<group>"; };
+		5D28F0FC23FB6AB600928FEA /* heart_beat_sound_out_sync.mp4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = heart_beat_sound_out_sync.mp4; sourceTree = "<group>"; };
+		5D28F10023FB868300928FEA /* heartbeats_in_sync.mp4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = heartbeats_in_sync.mp4; sourceTree = "<group>"; };
+		5D28F10123FB868300928FEA /* video_for_MAD_task_final.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_for_MAD_task_final.mp4; sourceTree = "<group>"; };
+		5D28F10423FB886700928FEA /* OnboardingMainVideoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMainVideoScreen.swift; sourceTree = "<group>"; };
+		5D28F10623FB8E2400928FEA /* OnboardingImageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingImageScreen.swift; sourceTree = "<group>"; };
+		5D2B597623D983B00013C635 /* BaselineDataScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaselineDataScreen.swift; sourceTree = "<group>"; };
+		5D2B597A23D9971C0013C635 /* SyncroTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncroTaskManager.swift; sourceTree = "<group>"; };
+		5D330DF52459795400A73E67 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		5D592E7A23D622C900C95210 /* ExitScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitScreen.swift; sourceTree = "<group>"; };
+		5D8D45AF23E00AF200518141 /* PracticeInstructionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeInstructionsScreen.swift; sourceTree = "<group>"; };
+		5DC2187223D467B500C4AEC6 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		5DC2187523D467F800C4AEC6 /* InteroceptionDataset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteroceptionDataset.swift; sourceTree = "<group>"; };
+		5DC2187B23D46F2D00C4AEC6 /* ParticipantIdScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantIdScreen.swift; sourceTree = "<group>"; };
+		5DE28F7523FD3430003A8AEE /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
+		5DE28F7923FD366F003A8AEE /* PlayerContainersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerContainersView.swift; sourceTree = "<group>"; };
+		60033A412678E1C7004854E5 /* TrialViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialViews.swift; sourceTree = "<group>"; };
+		60033A462678FCC3004854E5 /* DoublePressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePressButton.swift; sourceTree = "<group>"; };
+		6006C097269DFF1F00DFD737 /* Interoceptor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Interoceptor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6006C0AC269DFF2200DFD737 /* InteroceptorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InteroceptorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6006C0B7269DFF2200DFD737 /* InteroceptorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InteroceptorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6006C0D1269EE87700DFD737 /* libHeartRateDetector.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHeartRateDetector.a; path = InteroceptionProto/libHeartRateDetector.a; sourceTree = "<group>"; };
+		6006C0D2269EE87700DFD737 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = InteroceptionProto/include; sourceTree = "<group>"; };
+		6006C0DC269EF96800DFD737 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		6006C0E1269F311500DFD737 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		6006C0E626A1D8F000DFD737 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = InteroceptionProto/SceneDelegate.swift; sourceTree = "<group>"; };
+		6006C0E826A1E32700DFD737 /* FingerOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerOverlay.swift; sourceTree = "<group>"; };
+		604E0D8526726AF700FE68F4 /* ScreenOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenOrder.swift; sourceTree = "<group>"; };
+		604E0D9526736A3700FE68F4 /* screenorder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = screenorder.json; sourceTree = "<group>"; };
+		63778F10260A592900DA7BF7 /* highBeep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = highBeep.mp3; sourceTree = "<group>"; };
+		63778F11260A592A00DA7BF7 /* lowBeep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lowBeep.mp3; sourceTree = "<group>"; };
+		638CBDDB25ACB60900C375E8 /* clickHigh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clickHigh.mp3; sourceTree = "<group>"; };
+		638CBDDC25ACB60900C375E8 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
+		63B4B63D265BFF1F002F5DB5 /* Participants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participants.swift; sourceTree = "<group>"; };
+		951772822395432200B47989 /* TrialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialScreen.swift; sourceTree = "<group>"; };
+		951AD78A23952C0F00D26632 /* InteroceptionProto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InteroceptionProto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		951AD78D23952C0F00D26632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		951AD79223952C0F00D26632 /* InteroceptionProto.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InteroceptionProto.xcdatamodel; sourceTree = "<group>"; };
+		951AD79623952C1000D26632 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		951AD79923952C1000D26632 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		951AD79C23952C1000D26632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		951AD79E23952C1000D26632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		951AD7A923952C1000D26632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		951AD7B223952C1000D26632 /* InteroceptionProtoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteroceptionProtoUITests.swift; sourceTree = "<group>"; };
+		951AD7B423952C1000D26632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		951C43ED239A789400A9D310 /* FinalScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScreen.swift; sourceTree = "<group>"; };
+		952EEA51239551AC0059BE4A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		952EEA5A23956D410059BE4A /* Knob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knob.swift; sourceTree = "<group>"; };
+		952EEA5D239598D40059BE4A /* UIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
+		952EEA612396824A0059BE4A /* ConfidenceRatingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfidenceRatingScreen.swift; sourceTree = "<group>"; };
+		952EEA632397C1FD0059BE4A /* BodyPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPartsView.swift; sourceTree = "<group>"; };
+		9540A46A23A3CCA5003C32EB /* MotionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
+		95526AA623999B8900F7A141 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		95526AA8239A68CA00F7A141 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		9F128AE023991DF20054BD22 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
+		9F5375DF239AC1100063FBDC /* InteroceptionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteroceptionSettings.swift; sourceTree = "<group>"; };
+		C764C8369C350BE8C376D777 /* Pods_InteroceptionProto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InteroceptionProto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D350C7E35530D5F226B7AAF7 /* Pods-InteroceptionProto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InteroceptionProto.debug.xcconfig"; path = "Target Support Files/Pods-InteroceptionProto/Pods-InteroceptionProto.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6006C094269DFF1F00DFD737 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6006C0DB269EEBF700DFD737 /* libHeartRateDetector.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6006C0A9269DFF2200DFD737 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6006C0D5269EE87700DFD737 /* libHeartRateDetector.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6006C0B4269DFF2200DFD737 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6006C0D6269EE87700DFD737 /* libHeartRateDetector.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		951AD78723952C0F00D26632 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6006C0D3269EE87700DFD737 /* libHeartRateDetector.a in Frameworks */,
+				FD8D0A9D96E2A571E7F1AAB8 /* Pods_InteroceptionProto.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5D071D2E23F2E10300A0D6DA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5D071D3023F2E11B00A0D6DA /* User.swift */,
+				63B4B63D265BFF1F002F5DB5 /* Participants.swift */,
+				5D071D3123F2E11B00A0D6DA /* UserDetails.swift */,
+				5D071D2F23F2E11B00A0D6DA /* UserManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		5D28F0FA23FB6AA500928FEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5D28F0FB23FB6AAB00928FEA /* Videos */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5D28F0FB23FB6AAB00928FEA /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				5D28F0FC23FB6AB600928FEA /* heart_beat_sound_out_sync.mp4 */,
+				5D28F10023FB868300928FEA /* heartbeats_in_sync.mp4 */,
+				5D28F10123FB868300928FEA /* video_for_MAD_task_final.mp4 */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
+		5DC2187423D467E400C4AEC6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5DC2187523D467F800C4AEC6 /* InteroceptionDataset.swift */,
+				5D2B597A23D9971C0013C635 /* SyncroTaskManager.swift */,
+				6006C0E1269F311500DFD737 /* DataController.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		604E0D8426726AC200FE68F4 /* TaskStructure */ = {
+			isa = PBXGroup;
+			children = (
+				604E0D8526726AF700FE68F4 /* ScreenOrder.swift */,
+			);
+			path = TaskStructure;
+			sourceTree = "<group>";
+		};
+		951772842395473E00B47989 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5D2B597623D983B00013C635 /* BaselineDataScreen.swift */,
+				5D1E465C23DADC8200F3A8DE /* BaselineIntroScreen.swift */,
+				952EEA632397C1FD0059BE4A /* BodyPartsView.swift */,
+				952EEA612396824A0059BE4A /* ConfidenceRatingScreen.swift */,
+				5D592E7A23D622C900C95210 /* ExitScreen.swift */,
+				951C43ED239A789400A9D310 /* FinalScreen.swift */,
+				95526AA623999B8900F7A141 /* Onboarding.swift */,
+				5DC2187B23D46F2D00C4AEC6 /* ParticipantIdScreen.swift */,
+				5D8D45AF23E00AF200518141 /* PracticeInstructionsScreen.swift */,
+				95526AA8239A68CA00F7A141 /* RootView.swift */,
+				951772822395432200B47989 /* TrialScreen.swift */,
+				5D28F10623FB8E2400928FEA /* OnboardingImageScreen.swift */,
+				5D28F0F423FB688E00928FEA /* OnboardingVideoScreen.swift */,
+				5D28F10423FB886700928FEA /* OnboardingMainVideoScreen.swift */,
+				60033A412678E1C7004854E5 /* TrialViews.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		951AD78123952C0F00D26632 = {
+			isa = PBXGroup;
+			children = (
+				6006C0E626A1D8F000DFD737 /* SceneDelegate.swift */,
+				6006C0D2269EE87700DFD737 /* include */,
+				6006C0D1269EE87700DFD737 /* libHeartRateDetector.a */,
+				951AD78C23952C0F00D26632 /* InteroceptionProto */,
+				951AD7A623952C1000D26632 /* InteroceptionProtoTests */,
+				951AD7B123952C1000D26632 /* InteroceptionProtoUITests */,
+				951AD78B23952C0F00D26632 /* Products */,
+				A79BCE604BAFE8C634625D46 /* Pods */,
+				D5B37C57D52CE6EC7A48578F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		951AD78B23952C0F00D26632 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				951AD78A23952C0F00D26632 /* InteroceptionProto.app */,
+				6006C097269DFF1F00DFD737 /* Interoceptor.app */,
+				6006C0AC269DFF2200DFD737 /* InteroceptorTests.xctest */,
+				6006C0B7269DFF2200DFD737 /* InteroceptorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		951AD78C23952C0F00D26632 /* InteroceptionProto */ = {
+			isa = PBXGroup;
+			children = (
+				604E0D8426726AC200FE68F4 /* TaskStructure */,
+				5D071D2E23F2E10300A0D6DA /* Networking */,
+				5DC2187423D467E400C4AEC6 /* Data */,
+				952EEA5C239598C10059BE4A /* Utils */,
+				952EEA5723956CCB0059BE4A /* UIControls */,
+				951772842395473E00B47989 /* Screens */,
+				951AD78D23952C0F00D26632 /* AppDelegate.swift */,
+				9F5375DF239AC1100063FBDC /* InteroceptionSettings.swift */,
+				951AD79623952C1000D26632 /* Assets.xcassets */,
+				951AD79B23952C1000D26632 /* LaunchScreen.storyboard */,
+				951AD79E23952C1000D26632 /* Info.plist */,
+				952EEA51239551AC0059BE4A /* Localizable.strings */,
+				604E0D9526736A3700FE68F4 /* screenorder.json */,
+				9F128AE023991DF20054BD22 /* beep.mp3 */,
+				63778F10260A592900DA7BF7 /* highBeep.mp3 */,
+				63778F11260A592A00DA7BF7 /* lowBeep.mp3 */,
+				638CBDDC25ACB60900C375E8 /* click.mp3 */,
+				638CBDDB25ACB60900C375E8 /* clickHigh.mp3 */,
+				951AD79123952C0F00D26632 /* InteroceptionProto.xcdatamodeld */,
+				5D28F0FA23FB6AA500928FEA /* Resources */,
+				951AD79823952C1000D26632 /* Preview Content */,
+			);
+			path = InteroceptionProto;
+			sourceTree = "<group>";
+		};
+		951AD79823952C1000D26632 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				951AD79923952C1000D26632 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		951AD7A623952C1000D26632 /* InteroceptionProtoTests */ = {
+			isa = PBXGroup;
+			children = (
+				951AD7A923952C1000D26632 /* Info.plist */,
+				5D071D2823F26ED300A0D6DA /* InteroceptionDatasetTest.swift */,
+			);
+			path = InteroceptionProtoTests;
+			sourceTree = "<group>";
+		};
+		951AD7B123952C1000D26632 /* InteroceptionProtoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				951AD7B223952C1000D26632 /* InteroceptionProtoUITests.swift */,
+				951AD7B423952C1000D26632 /* Info.plist */,
+			);
+			path = InteroceptionProtoUITests;
+			sourceTree = "<group>";
+		};
+		952EEA5723956CCB0059BE4A /* UIControls */ = {
+			isa = PBXGroup;
+			children = (
+				952EEA5A23956D410059BE4A /* Knob.swift */,
+				5D071D3723F2E30300A0D6DA /* ActivityIndicator.swift */,
+				5D071D3923F2E33700A0D6DA /* ActivityIndicatorView.swift */,
+				5D28F0F623FB69D500928FEA /* PlayerView.swift */,
+				5D28F0F823FB69F400928FEA /* PlayerUIView.swift */,
+				5DE28F7523FD3430003A8AEE /* PlayerControlsView.swift */,
+				5DE28F7923FD366F003A8AEE /* PlayerContainersView.swift */,
+				5D330DF52459795400A73E67 /* ProgressBar.swift */,
+				60033A462678FCC3004854E5 /* DoublePressButton.swift */,
+				6006C0E826A1E32700DFD737 /* FingerOverlay.swift */,
+			);
+			path = UIControls;
+			sourceTree = "<group>";
+		};
+		952EEA5C239598C10059BE4A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				952EEA5D239598D40059BE4A /* UIUtils.swift */,
+				9540A46A23A3CCA5003C32EB /* MotionDetector.swift */,
+				5DC2187223D467B500C4AEC6 /* Platform.swift */,
+				6006C0DC269EF96800DFD737 /* Logging.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A79BCE604BAFE8C634625D46 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D350C7E35530D5F226B7AAF7 /* Pods-InteroceptionProto.debug.xcconfig */,
+				46F1A814D245FB3552992156 /* Pods-InteroceptionProto.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D5B37C57D52CE6EC7A48578F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C764C8369C350BE8C376D777 /* Pods_InteroceptionProto.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6006C096269DFF1F00DFD737 /* Interoceptor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6006C0BE269DFF2200DFD737 /* Build configuration list for PBXNativeTarget "Interoceptor" */;
+			buildPhases = (
+				6006C093269DFF1F00DFD737 /* Sources */,
+				6006C094269DFF1F00DFD737 /* Frameworks */,
+				6006C095269DFF1F00DFD737 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Interoceptor;
+			productName = Interoceptor;
+			productReference = 6006C097269DFF1F00DFD737 /* Interoceptor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6006C0AB269DFF2200DFD737 /* InteroceptorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6006C0C1269DFF2200DFD737 /* Build configuration list for PBXNativeTarget "InteroceptorTests" */;
+			buildPhases = (
+				6006C0A8269DFF2200DFD737 /* Sources */,
+				6006C0A9269DFF2200DFD737 /* Frameworks */,
+				6006C0AA269DFF2200DFD737 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6006C0AE269DFF2200DFD737 /* PBXTargetDependency */,
+			);
+			name = InteroceptorTests;
+			productName = InteroceptorTests;
+			productReference = 6006C0AC269DFF2200DFD737 /* InteroceptorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6006C0B6269DFF2200DFD737 /* InteroceptorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6006C0C4269DFF2200DFD737 /* Build configuration list for PBXNativeTarget "InteroceptorUITests" */;
+			buildPhases = (
+				6006C0B3269DFF2200DFD737 /* Sources */,
+				6006C0B4269DFF2200DFD737 /* Frameworks */,
+				6006C0B5269DFF2200DFD737 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6006C0B9269DFF2200DFD737 /* PBXTargetDependency */,
+			);
+			name = InteroceptorUITests;
+			productName = InteroceptorUITests;
+			productReference = 6006C0B7269DFF2200DFD737 /* InteroceptorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		951AD78923952C0F00D26632 /* InteroceptionProto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 951AD7B723952C1000D26632 /* Build configuration list for PBXNativeTarget "InteroceptionProto" */;
+			buildPhases = (
+				5FAF5E77D1B8E5AFB5119DD9 /* [CP] Check Pods Manifest.lock */,
+				60BB1AFF268F4EB500DFB4C9 /* Run Script */,
+				951AD78623952C0F00D26632 /* Sources */,
+				951AD78723952C0F00D26632 /* Frameworks */,
+				951AD78823952C0F00D26632 /* Resources */,
+				52E2894EC5FCB5074E2EE4A0 /* [CP] Embed Pods Frameworks */,
+				0851D67E0D461BE726AEB9A2 /* [CP] Copy Pods Resources */,
+				5DBCDD20248522D2008709D2 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InteroceptionProto;
+			productName = InteroceptionProto;
+			productReference = 951AD78A23952C0F00D26632 /* InteroceptionProto.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		951AD78223952C0F00D26632 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				ORGANIZATIONNAME = BioBeats;
+				TargetAttributes = {
+					6006C096269DFF1F00DFD737 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					6006C0AB269DFF2200DFD737 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 6006C096269DFF1F00DFD737;
+					};
+					6006C0B6269DFF2200DFD737 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 6006C096269DFF1F00DFD737;
+					};
+					951AD78923952C0F00D26632 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 951AD78523952C0F00D26632 /* Build configuration list for PBXProject "InteroceptionProto" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 951AD78123952C0F00D26632;
+			productRefGroup = 951AD78B23952C0F00D26632 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				951AD78923952C0F00D26632 /* InteroceptionProto */,
+				6006C096269DFF1F00DFD737 /* Interoceptor */,
+				6006C0AB269DFF2200DFD737 /* InteroceptorTests */,
+				6006C0B6269DFF2200DFD737 /* InteroceptorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6006C095269DFF1F00DFD737 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6006C0D8269EE87700DFD737 /* include in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6006C0AA269DFF2200DFD737 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6006C0D9269EE87700DFD737 /* include in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6006C0B5269DFF2200DFD737 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6006C0DA269EE87700DFD737 /* include in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		951AD78823952C0F00D26632 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				951AD79D23952C1000D26632 /* LaunchScreen.storyboard in Resources */,
+				9F128AE123991DF20054BD22 /* beep.mp3 in Resources */,
+				6006C0D7269EE87700DFD737 /* include in Resources */,
+				63778F12260A592A00DA7BF7 /* highBeep.mp3 in Resources */,
+				638CBDDE25ACB60A00C375E8 /* click.mp3 in Resources */,
+				952EEA52239551AC0059BE4A /* Localizable.strings in Resources */,
+				604E0D9626736A3700FE68F4 /* screenorder.json in Resources */,
+				63778F13260A592A00DA7BF7 /* lowBeep.mp3 in Resources */,
+				638CBDDD25ACB60A00C375E8 /* clickHigh.mp3 in Resources */,
+				5D28F10223FB868300928FEA /* heartbeats_in_sync.mp4 in Resources */,
+				5D28F10323FB868300928FEA /* video_for_MAD_task_final.mp4 in Resources */,
+				951AD79A23952C1000D26632 /* Preview Assets.xcassets in Resources */,
+				5D28F0FD23FB6AB600928FEA /* heart_beat_sound_out_sync.mp4 in Resources */,
+				951AD79723952C1000D26632 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0851D67E0D461BE726AEB9A2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InteroceptionProto/Pods-InteroceptionProto-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InteroceptionProto/Pods-InteroceptionProto-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InteroceptionProto/Pods-InteroceptionProto-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52E2894EC5FCB5074E2EE4A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InteroceptionProto/Pods-InteroceptionProto-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InteroceptionProto/Pods-InteroceptionProto-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InteroceptionProto/Pods-InteroceptionProto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DBCDD20248522D2008709D2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+		5FAF5E77D1B8E5AFB5119DD9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InteroceptionProto-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60BB1AFF268F4EB500DFB4C9 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6006C093269DFF1F00DFD737 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6006C0E3269F311500DFD737 /* DataController.swift in Sources */,
+				6006C0DE269EF96800DFD737 /* Logging.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6006C0A8269DFF2200DFD737 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6006C0E4269F311500DFD737 /* DataController.swift in Sources */,
+				6006C0DF269EF96800DFD737 /* Logging.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6006C0B3269DFF2200DFD737 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6006C0E5269F311500DFD737 /* DataController.swift in Sources */,
+				6006C0E0269EF96800DFD737 /* Logging.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		951AD78623952C0F00D26632 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DC2187C23D46F2D00C4AEC6 /* ParticipantIdScreen.swift in Sources */,
+				5D1E465D23DADC8200F3A8DE /* BaselineIntroScreen.swift in Sources */,
+				5D592E7B23D622C900C95210 /* ExitScreen.swift in Sources */,
+				951AD78E23952C0F00D26632 /* AppDelegate.swift in Sources */,
+				5D071D3323F2E11B00A0D6DA /* UserManager.swift in Sources */,
+				5D071D3A23F2E33700A0D6DA /* ActivityIndicatorView.swift in Sources */,
+				5D28F0F923FB69F400928FEA /* PlayerUIView.swift in Sources */,
+				5DC2187623D467F800C4AEC6 /* InteroceptionDataset.swift in Sources */,
+				5D330DF62459795400A73E67 /* ProgressBar.swift in Sources */,
+				5DE28F7623FD3430003A8AEE /* PlayerControlsView.swift in Sources */,
+				952EEA642397C1FD0059BE4A /* BodyPartsView.swift in Sources */,
+				5DC2187323D467B500C4AEC6 /* Platform.swift in Sources */,
+				952EEA5B23956D410059BE4A /* Knob.swift in Sources */,
+				5D071D3523F2E11B00A0D6DA /* UserDetails.swift in Sources */,
+				5D071D3823F2E30300A0D6DA /* ActivityIndicator.swift in Sources */,
+				6006C0E726A1D8F000DFD737 /* SceneDelegate.swift in Sources */,
+				5DE28F7A23FD366F003A8AEE /* PlayerContainersView.swift in Sources */,
+				5D2B597B23D9971C0013C635 /* SyncroTaskManager.swift in Sources */,
+				60033A472678FCC3004854E5 /* DoublePressButton.swift in Sources */,
+				6006C0E926A1E32700DFD737 /* FingerOverlay.swift in Sources */,
+				5D28F10723FB8E2400928FEA /* OnboardingImageScreen.swift in Sources */,
+				9F5375E0239AC1100063FBDC /* InteroceptionSettings.swift in Sources */,
+				604E0D8626726AF700FE68F4 /* ScreenOrder.swift in Sources */,
+				5D2B597723D983B00013C635 /* BaselineDataScreen.swift in Sources */,
+				952EEA622396824A0059BE4A /* ConfidenceRatingScreen.swift in Sources */,
+				951C43EE239A789400A9D310 /* FinalScreen.swift in Sources */,
+				60033A422678E1C8004854E5 /* TrialViews.swift in Sources */,
+				95526AA723999B8900F7A141 /* Onboarding.swift in Sources */,
+				63B4B63E265BFF1F002F5DB5 /* Participants.swift in Sources */,
+				952EEA5E239598D40059BE4A /* UIUtils.swift in Sources */,
+				5D8D45B023E00AF200518141 /* PracticeInstructionsScreen.swift in Sources */,
+				6006C0DD269EF96800DFD737 /* Logging.swift in Sources */,
+				951AD79323952C0F00D26632 /* InteroceptionProto.xcdatamodeld in Sources */,
+				5D28F0F523FB688E00928FEA /* OnboardingVideoScreen.swift in Sources */,
+				5D28F0F723FB69D500928FEA /* PlayerView.swift in Sources */,
+				951772832395432200B47989 /* TrialScreen.swift in Sources */,
+				95526AA9239A68CA00F7A141 /* RootView.swift in Sources */,
+				5D28F10523FB886700928FEA /* OnboardingMainVideoScreen.swift in Sources */,
+				9540A46B23A3CCA5003C32EB /* MotionDetector.swift in Sources */,
+				6006C0E2269F311500DFD737 /* DataController.swift in Sources */,
+				5D071D3423F2E11B00A0D6DA /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6006C0AE269DFF2200DFD737 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6006C096269DFF1F00DFD737 /* Interoceptor */;
+			targetProxy = 6006C0AD269DFF2200DFD737 /* PBXContainerItemProxy */;
+		};
+		6006C0B9269DFF2200DFD737 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6006C096269DFF1F00DFD737 /* Interoceptor */;
+			targetProxy = 6006C0B8269DFF2200DFD737 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		951AD79B23952C1000D26632 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				951AD79C23952C1000D26632 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6006C0BF269DFF2200DFD737 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Interoceptor/Preview Content\"";
+				DEVELOPMENT_TEAM = XP76RC5885;
+				ENABLE_PREVIEWS = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/InteroceptionProto/include/HeartDetectorEngine";
+				INFOPLIST_FILE = Interoceptor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/InteroceptionProto",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.biobeats.Interoceptor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6006C0C0269DFF2200DFD737 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Interoceptor/Preview Content\"";
+				DEVELOPMENT_TEAM = XP76RC5885;
+				ENABLE_PREVIEWS = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/InteroceptionProto/include/HeartDetectorEngine";
+				INFOPLIST_FILE = Interoceptor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/InteroceptionProto",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.biobeats.Interoceptor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6006C0C2269DFF2200DFD737 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XP76RC5885;
+				INFOPLIST_FILE = InteroceptorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/InteroceptionProto",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.biobeats.InteroceptorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Interoceptor.app/Interoceptor";
+			};
+			name = Debug;
+		};
+		6006C0C3269DFF2200DFD737 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XP76RC5885;
+				INFOPLIST_FILE = InteroceptorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/InteroceptionProto",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.biobeats.InteroceptorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Interoceptor.app/Interoceptor";
+			};
+			name = Release;
+		};
+		6006C0C5269DFF2200DFD737 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XP76RC5885;
+				INFOPLIST_FILE = InteroceptorUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/InteroceptionProto",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.biobeats.InteroceptorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Interoceptor;
+			};
+			name = Debug;
+		};
+		6006C0C6269DFF2200DFD737 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XP76RC5885;
+				INFOPLIST_FILE = InteroceptorUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/InteroceptionProto",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.biobeats.InteroceptorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Interoceptor;
+			};
+			name = Release;
+		};
+		951AD7B523952C1000D26632 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/InteroceptionProto/include/HeartDetectorEngine";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		951AD7B623952C1000D26632 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/InteroceptionProto/include/HeartDetectorEngine";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		951AD7B823952C1000D26632 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D350C7E35530D5F226B7AAF7 /* Pods-InteroceptionProto.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "14 (TR READY PROLIFIC)";
+				DEVELOPMENT_ASSET_PATHS = "\"InteroceptionProto/Preview Content\"";
+				DEVELOPMENT_TEAM = 7FQT3SN6PR;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = InteroceptionProto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HeartRateEngine",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/InteroceptionProto",
+				);
+				MARKETING_VERSION = 1.6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.biobeats.interoTestRetestProlific;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		951AD7B923952C1000D26632 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46F1A814D245FB3552992156 /* Pods-InteroceptionProto.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "14 (TR READY PROLIFIC)";
+				DEVELOPMENT_ASSET_PATHS = "\"InteroceptionProto/Preview Content\"";
+				DEVELOPMENT_TEAM = 7FQT3SN6PR;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = InteroceptionProto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HeartRateEngine",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/InteroceptionProto",
+				);
+				MARKETING_VERSION = 1.6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.biobeats.interoTestRetestProlific;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6006C0BE269DFF2200DFD737 /* Build configuration list for PBXNativeTarget "Interoceptor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6006C0BF269DFF2200DFD737 /* Debug */,
+				6006C0C0269DFF2200DFD737 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6006C0C1269DFF2200DFD737 /* Build configuration list for PBXNativeTarget "InteroceptorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6006C0C2269DFF2200DFD737 /* Debug */,
+				6006C0C3269DFF2200DFD737 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6006C0C4269DFF2200DFD737 /* Build configuration list for PBXNativeTarget "InteroceptorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6006C0C5269DFF2200DFD737 /* Debug */,
+				6006C0C6269DFF2200DFD737 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		951AD78523952C0F00D26632 /* Build configuration list for PBXProject "InteroceptionProto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				951AD7B523952C1000D26632 /* Debug */,
+				951AD7B623952C1000D26632 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		951AD7B723952C1000D26632 /* Build configuration list for PBXNativeTarget "InteroceptionProto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				951AD7B823952C1000D26632 /* Debug */,
+				951AD7B923952C1000D26632 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		951AD79123952C0F00D26632 /* InteroceptionProto.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				951AD79223952C0F00D26632 /* InteroceptionProto.xcdatamodel */,
+			);
+			currentVersion = 951AD79223952C0F00D26632 /* InteroceptionProto.xcdatamodel */;
+			path = InteroceptionProto.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 951AD78223952C0F00D26632 /* Project object */;
+}
